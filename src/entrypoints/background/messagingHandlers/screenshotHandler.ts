@@ -36,6 +36,15 @@ export function registerScreenshotHandlers() {
     });
 
     if (offscreenResponse.success) {
+      // Update storage with the cropped screenshot
+      const croppedScreenshotData = {
+        ...screenshotData,
+        dataUrl: offscreenResponse.croppedDataUrl,
+      };
+
+      await storage.setItem(`local:screenshots`, croppedScreenshotData);
+      console.info('Updated storage with cropped screenshot:', croppedScreenshotData);
+
       return { success: true, timestamp: Date.now(), data: offscreenResponse.data };
     }
 

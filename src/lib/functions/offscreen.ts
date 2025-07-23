@@ -6,6 +6,7 @@ export type TOffscreenMessage = {
 export type TOffscreenResponse = {
   success: boolean;
   data?: any;
+  croppedDataUrl?: string;
   error?: string;
 };
 
