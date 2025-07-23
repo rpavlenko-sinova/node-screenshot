@@ -84,6 +84,68 @@ type TModifyScreenshotResponse = {
   error?: string;
 };
 
+type TStartVideoRecordingData = {
+  tabId: number;
+};
+
+type TStartVideoRecordingResponse = {
+  success: boolean;
+  timestamp?: number;
+  error?: string;
+};
+
+type TStopVideoRecordingData = {
+  tabId: number;
+};
+
+type TStopVideoRecordingResponse = {
+  success: boolean;
+  timestamp?: number;
+  error?: string;
+};
+
+type TGetVideoRecordingsData = {};
+
+type TGetVideoRecordingsResponse = {
+  success: boolean;
+  videos?: any[];
+  timestamp?: number;
+  error?: string;
+};
+
+type TDeleteVideoRecordingData = {
+  id: string;
+};
+
+type TDeleteVideoRecordingResponse = {
+  success: boolean;
+  timestamp?: number;
+  error?: string;
+};
+
+type TPlayVideoRecordingData = {
+  id: string;
+};
+
+type TPlayVideoRecordingResponse = {
+  success: boolean;
+  timestamp?: number;
+  error?: string;
+};
+
+type TSaveVideoRecordingData = {
+  blobData: ArrayBuffer;
+  blobType: string;
+  blobSize: number;
+};
+
+type TSaveVideoRecordingResponse = {
+  success: boolean;
+  videoId?: string;
+  timestamp?: number;
+  error?: string;
+};
+
 type TPopupProtocol = {
   [BridgeMessage.PopupMessage]: (data: TPopupMessageData) => TPopupMessageResponse;
   [BridgeMessage.PopupAction]: (data: TPopupActionData) => TPopupActionResponse;
@@ -92,6 +154,12 @@ type TPopupProtocol = {
   [BridgeMessage.StorageDelete]: (data: TStorageDeleteData) => TStorageDeleteResponse;
   [BridgeMessage.CreateScreenshot]: (data: TCreateScreenshotData) => TCreateScreenshotResponse;
   [BridgeMessage.ModifyScreenshot]: (data: TModifyScreenshotData) => TModifyScreenshotResponse;
+  [BridgeMessage.StartVideoRecording]: (data: TStartVideoRecordingData) => TStartVideoRecordingResponse;
+  [BridgeMessage.StopVideoRecording]: (data: TStopVideoRecordingData) => TStopVideoRecordingResponse;
+  [BridgeMessage.GetVideoRecordings]: (data: TGetVideoRecordingsData) => TGetVideoRecordingsResponse;
+  [BridgeMessage.DeleteVideoRecording]: (data: TDeleteVideoRecordingData) => TDeleteVideoRecordingResponse;
+  [BridgeMessage.PlayVideoRecording]: (data: TPlayVideoRecordingData) => TPlayVideoRecordingResponse;
+  [BridgeMessage.SaveVideoRecording]: (data: TSaveVideoRecordingData) => TSaveVideoRecordingResponse;
 };
 
 export const { sendMessage, onMessage } = defineExtensionMessaging<TPopupProtocol>();

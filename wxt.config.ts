@@ -5,7 +5,7 @@ export default defineConfig({
   srcDir: 'src',
   modules: ['@wxt-dev/module-react'],
   manifest: {
-    permissions: ['storage', 'activeTab', 'tabs', 'offscreen'],
+    permissions: ['storage', 'activeTab', 'tabs', 'offscreen', 'desktopCapture', 'tabCapture'],
     host_permissions: ['<all_urls>'],
     action: {
       default_title: 'Node Screenshot',

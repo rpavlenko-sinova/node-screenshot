@@ -6,4 +6,10 @@ export enum BridgeMessage {
   StorageDelete = 'storage-delete',
   CreateScreenshot = 'create-screenshot',
   ModifyScreenshot = 'modify-screenshot',
+  StartVideoRecording = 'start-video-recording',
+  StopVideoRecording = 'stop-video-recording',
+  GetVideoRecordings = 'get-video-recordings',
+  DeleteVideoRecording = 'delete-video-recording',
+  PlayVideoRecording = 'play-video-recording',
+  SaveVideoRecording = 'save-video-recording',
 }

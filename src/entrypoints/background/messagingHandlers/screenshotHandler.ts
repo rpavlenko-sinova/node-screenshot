@@ -36,7 +36,6 @@ export function registerScreenshotHandlers() {
     });
 
     if (offscreenResponse.success) {
-      // Update storage with the cropped screenshot
       const croppedScreenshotData = {
         ...screenshotData,
         dataUrl: offscreenResponse.croppedDataUrl,
