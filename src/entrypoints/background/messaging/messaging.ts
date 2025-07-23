@@ -61,12 +61,37 @@ type TStorageDeleteResponse = {
   error?: string;
 };
 
+type TCreateScreenshotData = {
+  rect: DOMRect;
+};
+
+type TCreateScreenshotResponse = {
+  success: boolean;
+  timestamp?: number;
+  error?: string;
+};
+
+type TModifyScreenshotData = {
+  target: string;
+  action: string;
+  data?: any;
+};
+
+type TModifyScreenshotResponse = {
+  success: boolean;
+  timestamp?: number;
+  data?: any;
+  error?: string;
+};
+
 type TPopupProtocol = {
   [BridgeMessage.PopupMessage]: (data: TPopupMessageData) => TPopupMessageResponse;
   [BridgeMessage.PopupAction]: (data: TPopupActionData) => TPopupActionResponse;
   [BridgeMessage.StorageGet]: (data: TStorageGetData) => TStorageGetResponse;
   [BridgeMessage.StorageSet]: (data: TStorageSetData) => TStorageSetResponse;
   [BridgeMessage.StorageDelete]: (data: TStorageDeleteData) => TStorageDeleteResponse;
+  [BridgeMessage.CreateScreenshot]: (data: TCreateScreenshotData) => TCreateScreenshotResponse;
+  [BridgeMessage.ModifyScreenshot]: (data: TModifyScreenshotData) => TModifyScreenshotResponse;
 };
 
 export const { sendMessage, onMessage } = defineExtensionMessaging<TPopupProtocol>();

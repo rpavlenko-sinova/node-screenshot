@@ -4,4 +4,6 @@ export enum BridgeMessage {
   StorageGet = 'storage-get',
   StorageSet = 'storage-set',
   StorageDelete = 'storage-delete',
+  CreateScreenshot = 'create-screenshot',
+  ModifyScreenshot = 'modify-screenshot',
 }
