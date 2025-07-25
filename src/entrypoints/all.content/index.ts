@@ -19,10 +19,12 @@ export default defineContentScript({
           const dpr = window.devicePixelRatio || 1;
           const response = await sendMessage(BridgeMessage.CreateScreenshot, {
             rect: {
+              realX: box.x * dpr - 100 > 0 ? box.x * dpr - 100 : 0,
+              realY: box.y * dpr - 100 > 0 ? box.y * dpr - 100 : 0,
               x: box.x * dpr,
               y: box.y * dpr,
-              width: box.width * dpr,
-              height: box.height * dpr,
+              width: box.width * dpr + 200,
+              height: box.height * dpr + 200,
             },
           });
 

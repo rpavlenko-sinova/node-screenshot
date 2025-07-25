@@ -1,4 +1,3 @@
-import { registerStorageHandlers } from '@/entrypoints/background/messagingHandlers/storageHandler';
 import { registerScreenshotHandlers } from '@/entrypoints/background/messagingHandlers/screenshotHandler';
 import { registerVideoHandlers } from '@/entrypoints/background/messagingHandlers/videoHandler';
 
@@ -6,7 +5,6 @@ export default defineBackground(() => {
   console.info('Hello background!');
   // will output the different result based on if was built with :client or not
   console.info('VARIABLE:', import.meta.env.WXT_VARIABLE);
-  registerStorageHandlers();
   registerScreenshotHandlers();
   registerVideoHandlers();
   browser.action.onClicked.addListener((tab) => {

@@ -32,10 +32,24 @@ function handleScreenshotModify(message: any, sendResponse: (response: any) => v
     const cropWidth = message.data.screenshotData.dimensions.width;
     const cropHeight = message.data.screenshotData.dimensions.height;
 
+    const rectX = message.data.rect.realX;
+    const rectY = message.data.rect.realY;
+
     canvas.width = cropWidth;
     canvas.height = cropHeight;
 
-    ctx?.drawImage(img, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+    if (!ctx) {
+      sendResponse({
+        success: false,
+        error: 'Failed to get canvas context',
+      });
+      return;
+    }
+
+    ctx.drawImage(img, rectX, rectY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 10;
+    ctx.strokeRect(25, 25, cropWidth - 50, cropHeight - 50);
 
     const croppedDataUrl = canvas.toDataURL('image/png');
 
